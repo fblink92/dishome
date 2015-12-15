@@ -30,7 +30,14 @@ public class LoginServicio {
         Login tmp=new Login();
         tmp.setUsuario(usuario);
         usuarios=this.logindao.find(tmp);
-        login=usuarios.get(0);
-        return login;
+        if(usuarios.size()==1){
+            login=usuarios.get(0);
+            return login;
+        }else{
+            login=null;
+            return login;
+        }
+        
+        
     }
 }
