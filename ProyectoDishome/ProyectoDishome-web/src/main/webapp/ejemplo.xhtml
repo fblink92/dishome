@@ -21,19 +21,31 @@ and open the template in the editor.
 
         <h:body>
 
-                <p:layoutUnit position="center">
-                    Welcome to PrimeFaces
-                    <div> write content</div>
-            <p:dataTable var="cliente" value="#{Clientebean.cliente}">
-                <p:column headerText="Codigo">
-                    <h:outputText value="#{cliente.cedula}" />
-                </p:column>
+            <p:layoutUnit position="center">
+                Welcome to PrimeFaces
+                <div> write content</div>
+                <p:dataTable var="cliente" value="#{clientebean.cliente}">
+                    <p:column headerText="Codigo">
+                        <h:outputText value="#{cliente.cedula}" />
+                    </p:column>
 
-                <p:column headerText="Nombre">
-                    <h:outputText value="#{cliente.nombre}" />
-                </p:column>
-            </p:dataTable>
-                </p:layoutUnit>
+                    <p:column headerText="Nombre">
+                        <h:outputText value="#{cliente.nombre}" />
+                    </p:column>
+                    <p:column headerText="Apellido">
+                        <h:outputText value="#{cliente.apellido}" />
+                    </p:column>
+                    <p:column headerText="Telefono">
+                        <h:outputText value="#{cliente.telefono}" />
+                    </p:column>
+                    <p:column headerText="Direccion">
+                        <h:outputText value="#{cliente.direccion}" />
+                    </p:column>
+                    <p:column headerText="Email">
+                        <h:outputText value="#{cliente.email}" />
+                    </p:column>
+                </p:dataTable>
+            </p:layoutUnit>
         </h:body>
     </f:view>
 
