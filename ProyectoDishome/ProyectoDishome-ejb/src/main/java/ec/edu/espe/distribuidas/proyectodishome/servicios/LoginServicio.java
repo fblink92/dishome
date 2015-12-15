@@ -6,7 +6,9 @@
 package ec.edu.espe.distribuidas.proyectodishome.servicios;
 
 import ec.edu.espe.distribuidas.proyectodishome.dao.LoginDao;
+import ec.edu.espe.distribuidas.proyectodishome.model.Cliente;
 import ec.edu.espe.distribuidas.proyectodishome.model.Login;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -23,6 +25,12 @@ public class LoginServicio {
     private LoginDao logindao;
     
     public Login obtenerusuario(String usuario){
-        return this.logindao.findById(usuario, true);
+        List<Login> usuarios;
+        Login login;
+        Login tmp=new Login();
+        tmp.setUsuario(usuario);
+        usuarios=this.logindao.find(tmp);
+        login=usuarios.get(0);
+        return login;
     }
 }
