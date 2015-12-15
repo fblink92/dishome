@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <h:form>
+            <p:panel header="Login" style="clear: right;width:300px">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel for="username" value="Usuario:" />
+                    <p:inputText value="#{loginbean.username}"id="username"
+                                 required="true" label="username" />
+                    <h:outputLabel for="password" value="Clave:" />
+                    <p:password value="#{loginbean.password}" id="password" required="true"
+                                label="password" />
+                    <f:facet name="footer">
+                        <p:commandButton id="loginButton" value="Login"
+                                         actionListener="#{loginbean.login}" update=":mensajes"
+                                         oncomplete="manejarLogin(xhr, status, args)" />
+                    </f:facet>
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            function manejarLogin(xhr, status, args) {
+                if (!args.validationFailed && args.estaLogeado) {
+                    setTimeout(function () {
+                        window.location = args.view;
+                    }, 500);
+                }
+            }
+            //]]>
+        </script>
+    </body>
+</html>
