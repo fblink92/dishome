@@ -23,13 +23,12 @@ and open the template in the editor.
                 <h:panelGrid columns="2" cellpadding="5">
                     <h:outputLabel for="username" value="Usuario:" />
                     <p:inputText value="#{loginbean.username}"id="username"required="true" label="username">
-                    </p:inputText>
                     <h:outputLabel for="password" value="Clave:" />
                     <p:password value="#{loginbean.password}" id="password" required="true"
                                 label="password" />
                     <f:facet name="footer">
                         <p:commandButton id="loginButton" value="Login"
-                                         actionListener="#{loginbean.login}" update=":mensajes"
+                                         actionListener="#{loginbean.login(event)}" update=":mensajes"
                                          oncomplete="manejarLogin(xhr, status, args)" />
                     </f:facet>
                 </h:panelGrid>
