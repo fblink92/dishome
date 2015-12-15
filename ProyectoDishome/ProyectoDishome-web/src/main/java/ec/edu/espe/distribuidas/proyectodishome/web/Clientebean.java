@@ -25,7 +25,7 @@ public class Clientebean {
     private ClienteServicio clienteservicio;
     
     private List<Cliente> cliente;
-
+    
     /**
      * @return the cliente
      */
