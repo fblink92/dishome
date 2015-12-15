@@ -27,7 +27,7 @@ public class Loginbean {
     @EJB
     private LoginServicio loginservicio;
 
-    private Login loginuser = new Login();
+    private Login loginuser;
 
     public String getUsername() {
         return username;

@@ -18,17 +18,16 @@ and open the template in the editor.
         <div>TODO write content</div>
         <h:form>
             <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
-
             <p:panel header="Login" style="clear: right;width:300px">
                 <h:panelGrid columns="2" cellpadding="5">
                     <h:outputLabel for="username" value="Usuario:" />
-                    <p:inputText value="#{loginbean.username}"id="username"required="true" label="username">
+                    <p:inputText value="#{loginbean.username}" id="username" required="true" label="username"/>
                     <h:outputLabel for="password" value="Clave:" />
                     <p:password value="#{loginbean.password}" id="password" required="true"
                                 label="password" />
                     <f:facet name="footer">
-                        <p:commandButton id="loginButton" value="Login"
-                                         actionListener="#{loginbean.login(event)}" update=":mensajes"
+                        <p:commandButton value="Login"
+                                         actionListener="#{loginbean.login}" update="growl"
                                          oncomplete="manejarLogin(xhr, status, args)" />
                     </f:facet>
                 </h:panelGrid>
