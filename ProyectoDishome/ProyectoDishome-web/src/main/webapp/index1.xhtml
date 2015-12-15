@@ -22,8 +22,8 @@ and open the template in the editor.
             <p:panel header="Login" style="clear: right;width:300px">
                 <h:panelGrid columns="2" cellpadding="5">
                     <h:outputLabel for="username" value="Usuario:" />
-                    <p:inputText value="#{loginbean.username}"id="username"
-                                 required="true" label="username" />
+                    <p:inputText value="#{loginbean.username}"id="username"required="true" label="username">
+                    </p:inputText>
                     <h:outputLabel for="password" value="Clave:" />
                     <p:password value="#{loginbean.password}" id="password" required="true"
                                 label="password" />
