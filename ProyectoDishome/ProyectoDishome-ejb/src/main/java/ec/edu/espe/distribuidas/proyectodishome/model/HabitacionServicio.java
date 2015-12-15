@@ -32,7 +32,7 @@ public class HabitacionServicio implements Serializable{
     
     @Id
     @Column(name="COD_SERVICIOS")
-    private String cod_servicios;
+    private String cod_servicio;
     
     @Column(name="GASTOS_ADICIONALES")
     private BigDecimal gastos_varios;
@@ -62,15 +62,15 @@ public class HabitacionServicio implements Serializable{
     /**
      * @return the cod_servicios
      */
-    public String getCod_servicios() {
-        return cod_servicios;
+    public String getCod_servicio() {
+        return cod_servicio;
     }
 
     /**
      * @param cod_servicios the cod_servicios to set
      */
-    public void setCod_servicios(String cod_servicios) {
-        this.cod_servicios = cod_servicios;
+    public void setCod_servicio(String cod_servicio) {
+        this.cod_servicio = cod_servicio;
     }
 
     /**
@@ -91,7 +91,7 @@ public class HabitacionServicio implements Serializable{
     public int hashCode() {
         int hash = 5;
         hash = 89 * hash + Objects.hashCode(this.cod_habitacion);
-        hash = 89 * hash + Objects.hashCode(this.cod_servicios);
+        hash = 89 * hash + Objects.hashCode(this.cod_servicio);
         return hash;
     }
 
@@ -107,7 +107,7 @@ public class HabitacionServicio implements Serializable{
         if (!Objects.equals(this.cod_habitacion, other.cod_habitacion)) {
             return false;
         }
-        if (!Objects.equals(this.cod_servicios, other.cod_servicios)) {
+        if (!Objects.equals(this.cod_servicio, other.cod_servicio)) {
             return false;
         }
         return true;
