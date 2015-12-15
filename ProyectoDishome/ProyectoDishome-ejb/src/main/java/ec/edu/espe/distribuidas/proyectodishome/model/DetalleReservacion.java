@@ -29,9 +29,17 @@ public class DetalleReservacion implements Serializable{
     @Column(name="COD_RESERVACION", nullable = false)
     private String cod_reservacion;
     
+    @JoinColumn(name="COD_RESERVACION", referencedColumnName = "COD_RESERVACION", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Reservacion reservacion;
+    
     @Id
     @Column(name="COD_HABITACION", nullable = false)
     private String cod_habitacion;
+        
+    @JoinColumn(name="COD_HABITACION", referencedColumnName = "COD_HABITACION", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Habitacion habitacion;
     
     @Column(name="NRO_NOCHES")
     private Integer nro_noches;
@@ -45,13 +53,8 @@ public class DetalleReservacion implements Serializable{
     @Column(name="TOTAL")
     private BigDecimal total;
     
-    @JoinColumn(name="COD_RESERVACION", referencedColumnName = "COD_RESERVACION", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Reservacion reservacion;
-    
-    @JoinColumn(name="COD_HABITACION", referencedColumnName = "COD_HABITACION", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Habitacion habitacion;
+
+
 
     /**
      * @return the cod_reservacion

@@ -38,7 +38,7 @@ public class PagosMantenimiento implements Serializable{
 
    @JoinColumn(name="COD_HABITACION", referencedColumnName = "COD_HABITACION", insertable = false, updatable = false)
    @ManyToOne(optional = false)
-   private Habitacion habitaicon;
+   private Habitacion habitacion;
     /**
      * @return the cod_pagos
      */

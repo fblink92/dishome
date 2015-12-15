@@ -20,30 +20,31 @@ import javax.persistence.Entity;
  *
  * @author Freddy
  */
-
 @Entity
-@Table(name="HABITACION_SERVICIOS_07")
+@Table(name = "HABITACION_SERVICIOS_07")
 @IdClass(HabitacionServicioPK.class)
-public class HabitacionServicio implements Serializable{
-    
+public class HabitacionServicio implements Serializable {
+
     @Id
-    @Column(name="COD_HABITACION")
+    @Column(name = "COD_HABITACION")
     private String cod_habitacion;
-    
-    @Id
-    @Column(name="COD_SERVICIOS")
-    private String cod_servicio;
-    
-    @Column(name="GASTOS_ADICIONALES")
-    private BigDecimal gastos_varios;
-    
-    @JoinColumn(name="COD_SERVICIOS", referencedColumnName = "COD_SERVICIOS", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Servicios servicios;
-    
-    @JoinColumn(name="COD_HABITACION", referencedColumnName = "COD_HABITACION", insertable = false, updatable = false)
+
+    @JoinColumn(name = "COD_HABITACION", referencedColumnName = "COD_HABITACION", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Habitacion habitacion;
+
+
+    @Id
+    @Column(name = "COD_SERVICIOS")
+    private String cod_servicio;
+    
+    @JoinColumn(name = "COD_SERVICIOS", referencedColumnName = "COD_SERVICIOS", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Servicios servicios;
+
+
+    @Column(name = "GASTOS_ADICIONALES")
+    private BigDecimal gastos_varios;
 
     /**
      * @return the cod_habitacion
@@ -112,5 +113,5 @@ public class HabitacionServicio implements Serializable{
         }
         return true;
     }
-    
+
 }
