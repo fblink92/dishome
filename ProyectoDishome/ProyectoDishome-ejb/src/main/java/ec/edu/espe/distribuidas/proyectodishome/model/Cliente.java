@@ -21,7 +21,7 @@ import javax.persistence.Table;
 public class Cliente implements Serializable{
    
     @Id
-    @Column(name="CODIGO_CLIENTE", nullable = false)
+    @Column(name="COD_CLIENTE", nullable = false)
     private String codigo_cliente;
     
     @Column(name="CEDULA")

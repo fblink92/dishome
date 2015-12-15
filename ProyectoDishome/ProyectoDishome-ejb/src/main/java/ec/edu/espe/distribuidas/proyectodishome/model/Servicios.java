@@ -27,7 +27,7 @@ public class Servicios implements Serializable{
     @Column(name="DESCRIPCION")
     private String descripcion;
     
-    @Column(name = "ESTADO_SERVICIOS")
+    @Column(name = "ESTADO_SERVICIO")
     private String estado_servicio;
     
     @Column(name = "TARIFA")

@@ -34,7 +34,7 @@ public class HabitacionServicio implements Serializable{
     @Column(name="COD_SERVICIOS")
     private String cod_servicios;
     
-    @Column(name="GASTOS_VARIOS")
+    @Column(name="GASTOS_ADICIONALES")
     private BigDecimal gastos_varios;
     
     @JoinColumn(name="COD_SERVICIOS", referencedColumnName = "COD_SERVICIOS", insertable = false, updatable = false)

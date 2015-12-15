@@ -26,7 +26,7 @@ public class SemanaContrato {
     @Column(name="NRO_SEMANA")
     private Integer nro_semana;
     
-    @Column(name="ANIO_SIPONIBLE")
+    @Column(name="ANIO_DISPONIBLE")
     private Integer anio_disponible;
 
     /**
