@@ -7,6 +7,7 @@ package ec.edu.espe.distribuidas.proyectodishome.web;
 
 import ec.edu.espe.distribuidas.proyectodishome.model.Login;
 import ec.edu.espe.distribuidas.proyectodishome.servicios.LoginServicio;
+import java.io.IOException;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
@@ -52,14 +53,16 @@ public class Loginbean {
         return loggedIn;
     }
 
-    public void login(ActionEvent event) {
+    public void login(ActionEvent event) throws IOException {
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage message = null;
 
         if (username != null && password != null) {
             this.loginuser = loginservicio.obtenerusuario(username);
+            System.out.println(""+this.loginuser.getUsuario()+" "+this.loginuser.getPassword());
             if (this.loginuser != null && this.loginuser.getUsuario().equals(username) && this.loginuser.getPassword().equals(password)) {
                 loggedIn = true;
+                 System.out.println("holooola");
                 message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
             } else {
                 loggedIn = false;
@@ -71,7 +74,7 @@ public class Loginbean {
         FacesContext.getCurrentInstance().addMessage(null, message);
         context.addCallbackParam("estaLogeado", loggedIn);
         if (loggedIn) {
-            context.addCallbackParam("view", "faces/ejemplo.xhtml");
+           FacesContext.getCurrentInstance().getExternalContext().redirect("faces/ejemplo.xhtml");
         }
     }
 
