@@ -15,6 +15,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
+        <ui:composition template="/plantillas/template1.xhtml">
         <div>TODO write content</div>
         <h:form>
             <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
@@ -33,7 +34,7 @@ and open the template in the editor.
                 </h:panelGrid>
             </p:panel>
         </h:form>
-
+        </ui:composition>
         <script type="text/javascript">
             //<![CDATA[
             function manejarLogin(xhr, status, args) {

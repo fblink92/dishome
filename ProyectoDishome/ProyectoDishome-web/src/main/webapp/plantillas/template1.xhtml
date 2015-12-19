@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    <h:head>
+        <title>Aplicacion de Ejemplo</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="#{facesContext.externalContext.requestContextPath}/images/styles.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+        <div class="headerEX">
+            <img src="#{facesContext.externalContext.requestContextPath}/images/banner.png" class="img_banner" />
+        </div>
+        <div class="mainEX">
+            <div class="izq">
+                <p>Ejemplo qeu va a la izq</p>
+            </div>
+            <div class="main">
+                <h:form>
+                    <p:growl id="growl" showDetail="true" life="3000"  />    
+                    <ui:insert name="contenido">
+                        Default Content
+                    </ui:insert>
+                </h:form>
+            </div>
+        </div>
+        <div class="footerEX">
+                <div class="contenedor_logo_footer">
+                    <img src="#{facesContext.externalContext.requestContextPath}/images/logo_peq.png"/>
+                    <span class="gestor_footer"> GESTOR 2015</span>
+                </div>
+                <div class="social_footer">
+                    <table>
+                        <tr>
+                            <td><span class="social_f"><a href="http://www.gestorinc.com" target="_blank" class="social_f"> www.gestorinc.com </a> 
+                                </span></td>
+                            <td><a href="https://www.facebook.com/" target="_blank"><img src="#{facesContext.externalContext.requestContextPath}/images/log_FB.png"/></a></td>
+                            <td><a href="https://twitter.com/" target="_blank"><img src="#{facesContext.externalContext.requestContextPath}/images/log_TW.png"/></a></td>
+                            <td><a href="https://www.linkedin.com" target="_blank"><img src="#{facesContext.externalContext.requestContextPath}/images/log_IN.png"/></a></td>
+                            <td><a href="https://plus.google.com" target="_blank"><img src="#{facesContext.externalContext.requestContextPath}/images/log_GPLUS.png"/></a></td>
+                        </tr>
+                    </table>
+                </div>
+        </div>
+       
+
+    </h:body>
+</html>
