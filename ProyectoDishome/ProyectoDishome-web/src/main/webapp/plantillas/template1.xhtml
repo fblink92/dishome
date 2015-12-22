@@ -13,21 +13,15 @@
     </h:head>
     <h:body>
         <div class="headerEX">
-            <img src="#{facesContext.externalContext.requestContextPath}/images/banner.png" class="img_banner" />
+            <img src="#{facesContext.externalContext.requestContextPath}/images/24.png" class="img_banner" />
         </div>
-        <div class="mainEX">
-            <div class="izq">
-                <p>Ejemplo qeu va a la izq</p>
-            </div>
-            <div class="main">
+            <div class="mainEX">
                 <h:form>
                     <p:growl id="growl" showDetail="true" life="3000"  />    
-                    <ui:insert name="contenido">
-                        Default Content
+                    <ui:insert name="contenido">  
                     </ui:insert>
                 </h:form>
-            </div>
-        </div>
+            </div> 
         <div class="footerEX">
                 <div class="contenedor_logo_footer">
                     <img src="#{facesContext.externalContext.requestContextPath}/images/logo_peq.png"/>

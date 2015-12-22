@@ -1,50 +1,120 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <ui:composition template="/plantillas/template1.xhtml">
-        <div>TODO write content</div>
-        <h:form>
-            <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
-            <p:panel header="Login" style="clear: right;width:300px">
-                <h:panelGrid columns="2" cellpadding="5">
-                    <h:outputLabel for="username" value="Usuario:" />
-                    <p:inputText value="#{loginbean.username}" id="username" required="true" label="username"/>
-                    <h:outputLabel for="password" value="Clave:" />
-                    <p:password value="#{loginbean.password}" id="password" required="true"
-                                label="password" />
-                    <f:facet name="footer">
-                        <p:commandButton value="Login"
-                                         actionListener="#{loginbean.login}" update="growl"
-                                         oncomplete="manejarLogin(xhr, status, args)" />
-                    </f:facet>
-                </h:panelGrid>
-            </p:panel>
-        </h:form>
-        </ui:composition>
-        <script type="text/javascript">
-            //<![CDATA[
-            function manejarLogin(xhr, status, args) {
-                if (!args.validationFailed && args.estaLogeado) {
-                    setTimeout(function () {
-                        window.location = args.view;
-                    }, 500);
-                }
-            }
-            //]]>
-        </script>
-    </body>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>DISHOME--TIMESHRAE</title>    
+        <link href="#{facesContext.externalContext.requestContextPath}/css/bootstrap.css" type="text/css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/css/login.css" type="text/css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/css/style.css" type="text/css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/css/bootstrap.css.map" type="text/css" rel="stylesheet"/>
+        
+        <!--web-font-->
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'/>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'/>
+	<!--//fonts-->	
+	<!-- for-mobile-apps -->
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="ZET Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+		Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- //for-mobile-apps -->
+	<!-- js -->
+        <h:outputScript library="js" name="move-top.js" />
+        <h:outputScript library="js" name="easing.js" />
+        <h:outputScript library="js" name="jquery.min.js" />
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+	<!-- js -->
+	<!-- start-smoth-scrolling -->
+		<script type="text/javascript" src="js/move-top.js"></script>
+		<script type="text/javascript" src="js/easing.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,h:body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+                        
+		</script>         
+                <a href="#"><h:graphicImage value="/images/banner.png" width="100%"/>  </a>
+        
+    </h:head>
+    <h:body styleClass="Bimage">
+        
+        
+        <div id="home" class="banner">
+            <div class="container">
+                
+                <h1 align="center">DISHOME---TIMESHARE---INGRESO </h1>
+            <p:growl id="mensajes" sticky="true" showDetail="true" life="3000" />
+            <h:form id="formLogin" >
+                <p:growl id="growl" showDetail="true" />
+                <p:panel id="basic" header="Ingresar Usuario y Contraseña"  footer="DISHOME--TIMESHARE" widgetVar="dlg"
+                         style="margin-top: 150px; margin-bottom:30px; opacity: 0.8; width: inherit;" >                       
+                    <h:panelGrid columns="2" cellpadding="6" >
+                        
+                        <h:outputLabel for="username" value="Usuario:       " />
+                        <p:inputText id="username" value="#{loginbean.username}" required="true" requiredMessage="Usuario requerido"
+                                     label="username" placeholder="Ingrese su Usuario"  style="width: 90%;"/>
+                                     
+                        <h:outputLabel for="password" value="Contraseña:    " />
+                        <p:password id="password" value="#{loginbean.password}" required="true" requiredMessage="Clave requerida"
+                                    label="password" placeholder="Ingrese su Clave" style="width: 90%;"/>
+                                        <br/>
+                        <f:facet name="footer">
+                            <p:commandButton value="Iniciar Sesión" actionListener="#{loginbean.login}"
+                                             icon="fa-share-square" update=":mensajes"
+                                             oncomplete="manejarLogin(xhr, status, args)"
+                                             style="width: auto;"/>
+                        </f:facet>  
+                    </h:panelGrid>
+                </p:panel>
+                       
+            </h:form>
+            </div>
+        </div>
+
+
+  <!-- COdigo correspondiente a el footer de la pagina en el cual se encunetan las animaciones de las redes sociales !-->      
+            
+        <div class="footer" style="bottom: 0;">
+                    <div class="container" style="bottom: 0;">
+                        <div class="footer-left">
+                            <a href="#"><h:graphicImage value="/images/corona.png" width="20%" />  </a>
+                        </div>
+                        <div class="footer-right">
+                            <p>Redes Sociales</p>
+                            <ul>
+                                <li><a class="fb" href="#"></a></li>
+                                <li><a class="twitt" href="#"></a></li>
+                                <li><a class="google" href="#"></a></li>
+                                <li><a class="drib" href="#"></a></li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="copyright">
+                            <h4>Universidad de las Fuerzas Armadas - "ESPE"</h4>
+                        </div>
+                    </div>
+                </div>
+          
+    
+        
+    </h:body>
+    <script type="text/javascript">
+  //<![CDATA[
+     function manejarLogin(xhr, status, args) {
+      if (!args.validationFailed && args.estaLogeado) {
+        setTimeout(function() {
+          window.location = args.view;
+       }, 500);
+      }
+     }
+//]]>
+    </script>
 </html>

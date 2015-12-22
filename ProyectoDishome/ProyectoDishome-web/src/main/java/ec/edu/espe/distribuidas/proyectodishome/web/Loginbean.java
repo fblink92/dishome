@@ -28,6 +28,14 @@ public class Loginbean {
     @EJB
     private LoginServicio loginservicio;
 
+    public Login getLoginuser() {
+        return loginuser;
+    }
+
+    public void setLoginuser(Login loginuser) {
+        this.loginuser = loginuser;
+    }
+
     private Login loginuser;
 
     public String getUsername() {
@@ -74,14 +82,19 @@ public class Loginbean {
         FacesContext.getCurrentInstance().addMessage(null, message);
         context.addCallbackParam("estaLogeado", loggedIn);
         if (loggedIn) {
-           FacesContext.getCurrentInstance().getExternalContext().redirect("faces/ejemplo.xhtml");
+            context.addCallbackParam("view", "faces/Principal.xhtml");
+           //FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Principal.xhtml");
+        }else{
+            FacesContext.getCurrentInstance().getExternalContext().redirect("faces/index.xhtml");
         }
     }
 
     public void logout() {
+        RequestContext context = RequestContext.getCurrentInstance();
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
                 .getExternalContext().getSession(false);
         session.invalidate();
         loggedIn = false;
+        context.addCallbackParam("view", "faces/index.xhtml");
     }
 }
