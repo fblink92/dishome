@@ -27,6 +27,10 @@ public class Loginbean {
 
     @EJB
     private LoginServicio loginservicio;
+    private Login loginuser;
+    private String username;
+    private String password;
+    private Boolean loggedIn;
 
     public Login getLoginuser() {
         return loginuser;
@@ -35,8 +39,6 @@ public class Loginbean {
     public void setLoginuser(Login loginuser) {
         this.loginuser = loginuser;
     }
-
-    private Login loginuser;
 
     public String getUsername() {
         return username;
@@ -53,9 +55,6 @@ public class Loginbean {
     public void setPassword(String password) {
         this.password = password;
     }
-    private String username;
-    private String password;
-    private Boolean loggedIn;
 
     public boolean estaLogeado() {
         return loggedIn;
@@ -67,10 +66,8 @@ public class Loginbean {
 
         if (username != null && password != null) {
             this.loginuser = loginservicio.obtenerusuario(username);
-            System.out.println(""+this.loginuser.getUsuario()+" "+this.loginuser.getPassword());
             if (this.loginuser != null && this.loginuser.getUsuario().equals(username) && this.loginuser.getPassword().equals(password)) {
                 loggedIn = true;
-                 System.out.println("holooola");
                 message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
             } else {
                 loggedIn = false;
@@ -83,9 +80,10 @@ public class Loginbean {
         context.addCallbackParam("estaLogeado", loggedIn);
         if (loggedIn) {
             context.addCallbackParam("view", "faces/Principal.xhtml");
-           //FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Principal.xhtml");
-        }else{
-            FacesContext.getCurrentInstance().getExternalContext().redirect("faces/index.xhtml");
+            //FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Principal.xhtml");
+        } else {
+            //FacesContext.getCurrentInstance().getExternalContext().redirect("faces/index.xhtml");
+            context.addCallbackParam("view", "faces/index.xhtml");
         }
     }
 

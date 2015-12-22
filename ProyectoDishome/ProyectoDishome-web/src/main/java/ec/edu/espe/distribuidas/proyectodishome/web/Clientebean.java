@@ -27,15 +27,15 @@ import org.primefaces.event.RowEditEvent;
  */
 @ViewScoped
 @ManagedBean
-public class Clientebean extends BaseBean implements Serializable{
-    
+public class Clientebean extends BaseBean implements Serializable {
+
     @EJB
     private ClienteServicio clienteservicio;
-    
+
     private List<Cliente> cliente;
-    private Cliente cliente1=new Cliente();
+    private Cliente cliente1 = new Cliente();
     private Cliente clienteselected;
-    
+
     /**
      * @return the cliente
      */
@@ -65,53 +65,53 @@ public class Clientebean extends BaseBean implements Serializable{
     public void setClienteselected(Cliente clienteselected) {
         this.clienteselected = clienteselected;
     }
-    
-    
+
     @PostConstruct
-    public void inicializar(){
-    cliente=clienteservicio.obtenerTodos();
-   }
+    public void inicializar() {
+        cliente = clienteservicio.obtenerTodos();
+    }
 
     @Override
-    public void nuevo()
-    {
+    public void nuevo() {
         super.nuevo();
     }
+
     @Override
-        public void modificar() {
+    public void modificar() {
         super.modificar();
         this.cliente1 = new Cliente();
         try {
             BeanUtils.copyProperties(this.cliente1, this.clienteselected);
         } catch (Exception e) {
-            FacesContext context = FacesContext.getCurrentInstance(); 
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error no controlado",  e.getMessage()));
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error no controlado", e.getMessage()));
         }
     }
-          public void aceptar() {
-        FacesContext context = FacesContext.getCurrentInstance(); 
+
+    public void aceptar() {
+        FacesContext context = FacesContext.getCurrentInstance();
         if (super.isEnNuevo()) {
             try {
                 //Login usuario = (Login)((HttpServletRequest)context.getExternalContext().getRequest()).getSession().getAttribute("usuario");
                 this.clienteservicio.crearCliente(this.cliente1);
                 this.cliente.add(0, this.cliente1);
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Se registro el cliente: "+this.cliente1.toString(), null));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Se registro el cliente: " + this.cliente1.toString(), null));
             } catch (Exception e) {
 
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null));
-            } 
+            }
         } else {
             try {
                 //Llamar a modificar no a crear
                 this.clienteservicio.actualizarCliente(this.cliente1);
                 BeanUtils.copyProperties(this.clienteselected, this.cliente1);
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Se registro el cliente: "+this.cliente1.toString(), null));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Se registro el cliente: " + this.cliente1.toString(), null));
             } catch (Exception e) {
 
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null));
-            } 
+            }
         }
         this.reset();
     }
-    
+
 }
