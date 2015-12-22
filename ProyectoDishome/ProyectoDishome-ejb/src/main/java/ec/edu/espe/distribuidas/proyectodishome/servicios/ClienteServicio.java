@@ -41,4 +41,16 @@ public class ClienteServicio {
         }
     }
 
+    public void actualizarCliente(Cliente cliente) {
+        this.clientedao.update(cliente);
+    }
+
+    public void eliminarCliente(String codigocliente) {
+        try {
+            Cliente clientetmp = this.obtenerPorID(codigocliente);
+            this.clientedao.remove(clientetmp);
+        } catch (Exception e) {
+            throw new ValidacionException("El cliente " + codigocliente + " esta asociada a una reservacion");
+        }
+    }
 }
