@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/plantillas/template3.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+    <ui:define name="contenido">
+        <h:form id="tabla">
+            <p:dataTable var="usuario" value="#{usuarioBean.usuarios}" selectionMode="single" 
+                         selection="#{usuarioBean.usuarioSelected}" rowKey="#{usuario.usuario}">
+                <p:ajax event="rowSelect" update="@form" />  
+                <p:column headerText="Usuario">
+                    <h:outputText value="#{usuario.usuario}" />
+                </p:column>
+                
+            </p:dataTable>
+            <p:spacer/>
+            <p:panelGrid id="controllers" columns="3">
+
+                <p:commandButton value="Nuevo" actionListener="#{usuarioBean.nuevo()}" update="agregar" oncomplete="PF('dlg').show()" />
+                <p:commandButton value="Actualizar" actionListener="#{usuarioBean.modificar()}" update="agregar" oncomplete="PF('dlg').show()"/>
+                <p:commandButton value="Elimninar" actionListener="#{usuarioBean.eliminar()}" update="tabla" />
+
+            </p:panelGrid>
+
+        </h:form>
+
+        <p:dialog id="agregar" header="Ingreso" widgetVar="dlg" resizable="false">
+            <h:form id="ingreso">
+                <h:panelGrid columns="3" style="margin: 0 auto;">
+                    <p:outputLabel for="usuario" value="Usuario" />
+                    <p:inputText id="usuario" value="#{usuarioBean.usuario.usuario}" requiredMessage="Ingrese usuario" required="true" readonly="#{usuarioBean.enModificar}"/>
+                    <p:message for="usuario" />
+                    <p:outputLabel for="password" value="Password" />
+                    <p:inputText id="password" value="#{usuarioBean.usuario.password}" requiredMessage="Ingrese password" required="true"/>
+                    <p:message for="password" />
+                         
+                    <p:commandButton value="Aceptar" actionListener="#{usuarioBean.aceptar()}" update="tabla"/>
+                    <p:commandButton value="Cancelar"  actionListener="#{usuarioBean.cancelar()}" oncomplete="PF('dlg').hide();"/>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+    </ui:define>
+
+</ui:composition>

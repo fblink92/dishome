@@ -6,11 +6,15 @@
 package ec.edu.espe.distribuidas.proyectodishome.web;
 
 import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.view.ViewScoped;
 
 /**
  *
  * @author Freddy
  */
+@ViewScoped
+@ManagedBean
 public class BaseBean implements Serializable{
 
     private boolean enNuevo;
