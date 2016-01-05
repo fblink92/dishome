@@ -11,17 +11,19 @@ import java.io.Serializable;
  *
  * @author Freddy
  */
-public class BaseBean implements Serializable {
+public class BaseBean implements Serializable{
 
     private boolean enNuevo;
     private boolean enModificar;
 
     public void nuevo() {
         this.enNuevo = true;
+        this.enModificar=false;
     }
 
     public void modificar() {
         this.enModificar = true;
+        this.enNuevo=false;
     }
 
     public void cancelar() {
