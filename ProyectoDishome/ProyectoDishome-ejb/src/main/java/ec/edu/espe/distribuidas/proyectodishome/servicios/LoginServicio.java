@@ -6,6 +6,7 @@
 package ec.edu.espe.distribuidas.proyectodishome.servicios;
 
 import ec.edu.espe.distribuidas.proyectodishome.dao.LoginDao;
+import ec.edu.espe.distribuidas.proyectodishome.exceptions.ValidacionException;
 import ec.edu.espe.distribuidas.proyectodishome.model.Cliente;
 import ec.edu.espe.distribuidas.proyectodishome.model.Login;
 import java.util.List;
@@ -39,5 +40,29 @@ public class LoginServicio {
         }
         
         
+    }
+    public List<Login> obtenertodos(){
+        return this.logindao.findAll();
+        
+    }
+    public void crearUsuario(Login usuario) throws ValidacionException {
+        Login usuariotmp = this.obtenerusuario(usuario.getUsuario());
+        if (usuariotmp == null) {
+            this.logindao.insert(usuario);
+        } else {
+            throw new ValidacionException("El usuario " + usuario.getUsuario() + " ya existe");
+        }
+    }
+    
+        public void actualizarUsuario(Login usuario) {
+        this.logindao.update(usuario);
+    }
+         public void eliminarUsuario(String usuario) {
+        try {
+            Login usuariotmp = this.obtenerusuario(usuario);
+            this.logindao.remove(usuariotmp);
+        } catch (Exception e) {
+            throw new ValidacionException("El Usuario " + usuario + " esta asociada a una reservacion");
+        }
     }
 }
